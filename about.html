@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Về Shakes - Hành Trình Phát Triển</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f7f3;
+        }
+
+        /* Header Styles */
+        .site-header {
+            background: #a00000;
+            color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .site-header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 2rem;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: #ffcc00;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 600px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('photo/poster1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        /* History Section */
+        .history {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #a00000;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: #a00000;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            width: 50%;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #a00000;
+            border-radius: 50%;
+            top: 30px;
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: 50%;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .timeline-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin: -20px -20px 20px -20px;
+            width: calc(100% + 40px);
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .timeline-item.visible .timeline-image {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .timeline-year {
+            font-size: 1.5rem;
+            color: #a00000;
+            margin-bottom: 10px;
+        }
+
+        /* Development Section */
+        .development {
+            padding: 80px 0;
+            background: #f9f7f3;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            color: #a00000;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: #222;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .timeline-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .timeline-item:nth-child(even) {
+            transform: translateY(20px) translateX(20px);
+        }
+
+        .timeline-item:nth-child(odd) {
+            transform: translateY(20px) translateX(-20px);
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0) translateX(0);
+        }
+
+        .stat-card {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .stat-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 4px 20px rgba(160, 0, 0, 0.15);
+        }
+
+        .animate-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.2
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.timeline-item, .stat-card').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="index123.html" class="logo">SHAKES</a>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index123.html">Trang Chủ</a></li>
+                    <li><a href="about.html">Về Shakes</a></li>
+                    <li><a href="lienhe.html">Liên Hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Về Shakes Coffee</h1>
+            <p>Từ những hạt cà phê Việt Nam, chúng tôi đem đến những trải nghiệm cà phê đích thực.</p>
+        </div>
+    </section>
+
+    <section class="history container">
+        <h2 class="section-title">Hành Trình Phát Triển</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="photo/9-e1732173718512.jpg" alt="Cửa hàng đầu tiên 1999" class="timeline-image" loading="lazy">
+                    <div class="timeline-year">1999</div>
+                    <p>Shakes Coffee được thành lập bởi David Thai, với cửa hàng đầu tiên tại Hà Nội. Bắt đầu từ việc đóng gói và phân phối cà phê rang xay.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="photo/cafee1.jpg" alt="Mở rộng chuỗi cửa hàng 2002" class="timeline-image" loading="lazy">
+                    <div class="timeline-year">2002</div>
+                    <p>Mở rộng mô hình kinh doanh với chuỗi cửa hàng cà phê phục vụ tại chỗ, tạo nên không gian gặp gỡ, trò chuyện cho giới trẻ Việt Nam.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="photo/kite-coldbrew-e1732174639406.jpg" alt="Phát triển 2012" class="timeline-image" loading="lazy">
+                    <div class="timeline-year">2012</div>
+                    <p>Trở thành một phần của Kite Corporation (KC), mở ra cơ hội phát triển mới trên thị trường trong nước và quốc tế.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="photo/kite-mocktail-e1732174600453.jpg" alt="Highlands hiện đại 2020" class="timeline-image" loading="lazy">
+                    <div class="timeline-year">2020</div>
+                    <p>Phát triển mạnh mẽ với hơn 300 cửa hàng trên toàn quốc, trở thành thương hiệu cà phê Việt Nam được yêu thích.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="development">
+        <div class="container">
+            <h2 class="section-title">Con Số Ấn Tượng</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <p>Cửa hàng trên toàn quốc</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">20+</div>
+                    <p>Năm phát triển</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">63</div>
+                    <p>Tỉnh thành</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5000+</div>
+                    <p>Nhân viên</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© 2025 Shakes Coffee. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">YouTube</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

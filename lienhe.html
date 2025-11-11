@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Liên Hệ - SHAKES</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body{font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;background:#f4f4f4;color:#222;margin:0}
+    .site-header{background:#a00000;color:#fff}
+    .container{max-width:1200px;margin:0 auto;padding:0 24px}
+    .contact-hero{background:linear-gradient(180deg,#fff,#fff);padding:48px 0;text-align:center}
+    .contact-hero h1{font-size:36px;color:#a00000;margin-bottom:8px}
+    .contact-layout{display:grid;grid-template-columns:1fr 420px;gap:32px;max-width:1200px;margin:32px auto;padding:0 24px}
+    .card{background:#fff;border-radius:10px;padding:24px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+    .contact-info h3{margin-top:0;color:#333}
+    .contact-list{list-style:none;padding:0;margin:16px 0 0}
+    .contact-list li{display:flex;gap:12px;align-items:center;padding:8px 0;color:#555}
+    .contact-form label{display:block;font-weight:600;margin-top:12px;color:#444}
+    .contact-form input,.contact-form textarea{width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;margin-top:6px;font-size:14px}
+    .contact-form textarea{min-height:140px;resize:vertical}
+    .btn-submit{background:linear-gradient(45deg,#a00000,#ff6b6b);color:#fff;padding:12px 20px;border:none;border-radius:999px;margin-top:14px;cursor:pointer;font-weight:700}
+    .map-holder{border-radius:10px;overflow:hidden}
+    @media (max-width:880px){.contact-layout{grid-template-columns:1fr;}.map-holder{margin-top:16px}}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding:18px 0">
+      <a href="index123.html" style="color:#fff;text-decoration:none;font-weight:900;font-size:28px">SHAKES</a>
+      <nav>
+        <a href="index123.html" style="color:#fff;text-decoration:none;margin-right:20px">Trang chủ</a>
+        <a href="about.html" style="color:#fff;text-decoration:none;margin-right:20px">Về Shakes</a>
+        <a href="contact.html" style="color:#fff;text-decoration:none;font-weight:700;padding:8px 12px;border:1px solid rgba(255,255,255,0.2);border-radius:6px">Liên Hệ</a>
+      </nav>
+    </div>
+  </header>
+  <section class="contact-hero">
+    <div class="container">
+      <h1>Liên Hệ</h1>
+      <p>Chúng tôi sẵn sàng hỗ trợ — hãy gửi tin nhắn cho chúng tôi hoặc ghé cửa hàng.</p>
+    </div>
+  </section>
+  <main class="contact-layout">
+    <div>
+      <div class="card contact-info">
+        <h3>Thông tin liên hệ</h3>
+        <p>Rất vui được phục vụ bạn — liên hệ với chúng tôi qua các kênh dưới đây hoặc dùng mẫu để gửi tin nhắn.</p>
+        <ul class="contact-list">
+          <li><i class="fas fa-map-marker-alt" style="color:#a00000;width:20px"></i> 35 Thái Phiên, Hải Châu, Đà Nẵng</li>
+          <li><i class="fas fa-phone" style="color:#a00000;width:20px"></i> (+84) 35 789 5335</li>
+          <li><i class="fas fa-envelope" style="color:#a00000;width:20px"></i> info@shakes.com</li>
+          <li><i class="fab fa-facebook" style="color:#3b5998;width:20px"></i> facebook.com/shakes</li>
+        </ul>
+      </div>
+      <div class="card contact-form" style="margin-top:20px">
+        <h3 style="margin-top:0">Gửi tin nhắn cho chúng tôi</h3>
+        <form id="contactForm">
+          <label for="name">Họ và tên</label>
+          <input id="name" name="name" type="text" required>
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required>
+
+          <label for="subject">Chủ đề</label>
+          <input id="subject" name="subject" type="text">
+
+          <label for="message">Nội dung</label>
+          <textarea id="message" name="message" required></textarea>
+
+          <button class="btn-submit" type="submit">Gửi liên hệ</button>
+        </form>
+      </div>
+    </div>
+    <aside>
+      <div class="card map-holder">
+        <iframe width="100%" height="360" style="border:0" loading="lazy" allowfullscreen
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.0000000000005!2d106.00000000000001!3d10.000000000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDEwJzQ2LjAiTiAxMDfCsDAwJzAwLjAiRQ!5e0!3m2!1svi!2s!4v0000000000000">
+        </iframe>
+      </div>
+      <div style="margin-top:20px" class="card">
+        <h3 style="margin-top:0">Giờ mở cửa</h3>
+        <p>Thứ 2 - Thứ 6: 07:00 - 21:00<br>Thứ 7 - CN: 08:00 - 22:00</p>
+      </div>
+    </aside>
+  </main>
+  <footer style="padding:28px 0;text-align:center;background:#111;color:#ddd;margin-top:40px">
+    <div class="container">© 2025 SHAKES — Mọi quyền được bảo lưu.</div>
+  </footer>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('Cảm ơn! Chúng tôi đã nhận được tin nhắn của bạn.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
